@@ -1,0 +1,1 @@
+#include <stdio.h>/* Self replicating */char*getStr(){return "#include <stdio.h>/* Self replicating */char*getStr(){return }intmain(void){/* Propagation */return 0;}"}intmain(void){/* Propagation */return 0;}
