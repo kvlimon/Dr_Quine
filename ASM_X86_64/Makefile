@@ -8,7 +8,7 @@ SRCS = Colleen.s Grace.s Sully.s
 OBJS = $(SRCS:.s=.o)
 
 EXECUTABLES = Colleen Grace Sully
-TMP_FILES = tmp_diff
+TMP_FILES = tmp_diff Grace_kid.s Sully_*.s
 
 .PHONY: all clean fclean re
 
