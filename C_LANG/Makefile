@@ -1,27 +1,27 @@
 CC = clang
 CFLAGS = -Werror -Wall -Wextra
 
-SRCS = Colleen.c Grace.c Sully.c
 EXECUTABLES = Colleen Grace Sully
 
-.PHONY: all clean fclean re
+SRCS = $(addsuffix .c, $(EXECUTABLES))
+OBJS = $(SRCS:.c=.o)
+
+TMP_FILES = tmp_diff Grace_kid.c $(wildcard Sully_*)
 
 all: $(EXECUTABLES)
 
-colleen: Colleen.c
-	$(CC) $(CFLAGS) -o Colleen Colleen.c
+%.o: %.c
+	$(CC) -c $(CFLAGS) $< -o $@
 
-grace: Grace.c
-	$(CC) $(CFLAGS) -o Grace Grace.c
-
-sully: Sully.c
-	$(CC) $(CFLAGS) -o Sully Sully.c
+$(EXECUTABLES): %: %.o
+	$(CC) $< -o $@
 
 clean:
-	rm -f Grace_kid.c
-	rm -f tmp_Colleen
+	rm -f $(OBJS)
 
 fclean: clean
-	rm -f $(EXECUTABLES)
+	rm -f $(EXECUTABLES) $(TMP_FILES)
 
 re: fclean all
+
+.PHONY: all clean fclean re
