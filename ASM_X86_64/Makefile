@@ -4,27 +4,20 @@ NASM_FLAGS = -f elf64
 CC = clang
 CFLAGS = -Werror -Wall -Wextra -fstack-protector-strong
 
-SRCS = Colleen.s Grace.s Sully.s
+EXECUTABLES = Colleen Grace Sully
+
+SRCS = $(addsuffix .s, $(EXECUTABLES))
 OBJS = $(SRCS:.s=.o)
 
-EXECUTABLES = Colleen Grace Sully
-TMP_FILES = tmp_diff Grace_kid.s Sully_*.s
-
-.PHONY: all clean fclean re
+TMP_FILES = tmp_diff Grace_kid.s $(wildcard Sully_*)
 
 all: $(EXECUTABLES)
 
-%.o : %.s
+%.o: %.s
 	$(NASM) $(NASM_FLAGS) $< -o $@
 
-colleen: Colleen.o
-	$(CC) $(CFLAGS) $< -o Colleen
-
-grace: Grace.o
-	$(CC) $(CFLAGS) $< -o Grace
-
-sully: Sully.o
-	$(CC) $(CFLAGS) $< -o Sully
+$(EXECUTABLES): %: %.o
+	$(CC) $(CFLAGS) $< -o $@
 
 clean:
 	rm -f $(OBJS)
@@ -33,3 +26,5 @@ fclean: clean
 	rm -f $(EXECUTABLES) $(TMP_FILES)
 
 re: fclean all
+
+.PHONY: all clean fclean re
