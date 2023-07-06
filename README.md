@@ -5,7 +5,7 @@ here](https://live.staticflickr.com/65535/53005537311_5ab40c796e_c.jpg)
 This project invites you to confront the principle of self-reproduction 
 and the problems that derive from it. It is a perfect introduction to more 
 complex projects, particularly malware projects. The subject confronts us 
-with fixed points, kleene's theorem and Quines.
+with Fixed points, Kleene's recursion theorem and Quines.
 
 ## Quine
 A **quine** is a computer program which takes no input and produces a copy 
@@ -25,31 +25,18 @@ execution environment is viewed as a function transforming programs into
 their outputs. Quines are possible in any Turing-complete programming 
 language, as a direct consequence of **Kleene's recursion theorem**.
 
+## Kleene's recursion theorem
 
-## Fixed points & Kleene's theorem
+We do think that Kleene’s recursion theorem is the mathematical backbone of computer virology.
+In computability theory, Kleene's recursion theorems are a pair of fundamental results about the application of computable functions to their own descriptions.
+The theorems were first proved by Stephen Kleene in 1938 and appear in his 1952 book “Introduction to Metamathematics”.
+The recursion theorems can be applied to construct fixed points of certain operations on computable functions, to generate quines, and to construct functions defined via recursive definitions.
 
-**Kleene’s theorem** concerns functions that take an input value and 
-return another output value. Some of these functions may have fixed 
-points, that is, input values for which the output is identical to the 
-input.
-
-Let’s take an example to illustrate this. Suppose we have a very simple 
-mathematical function that doubles a number. If we take the number 2 and 
-apply it to this function, we get 4. If we take 4 again and apply it to 
-the function, we get 8. This sequence can continue indefinitely: 2, 4, 8, 
-16, 32, and so on. However, if we take the number 0 and apply it to this 
-function, we always get 0. This is called a **fixed point**.
-
-**Kleene’s theorem** states that for any computable function there is a 
-fixed point. In other words, if we have a function that we can compute 
-algorithmically, we can find an input value for which the output is 
-identical to the input.
-
-## How I assimilated Fixed points, Kleene's theorem to Quines
+## How I assimilated Fixed points to Quines
 
 In the context of programming and the theory of programming languages, we 
-have to understand this sentence "Fixed point of an execution 
-environment". We will define the key words :
+have to understand this definition of a quine -> "A quine is a fixed point of an execution 
+environment". We will define the keywords :
 
 **<u>Execution environment</u>**: The execution environment refers to all 
 the resources and parameters required to run a computer program. It 
